@@ -12,23 +12,46 @@ import base64
 
 
 #st.title('Quiz SNCF')
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url(data:image/{"gif"};base64,{encoded_string.decode()});
+        background-size: cover
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
 
+groupe1 = st.empty()
 
 c1, c2, c3 = st.columns(3)
 with c1:
     st.text('')
 with c2:
-    st.markdown("<h1 style='text-align: center'>Quiz SNCF</h1>", unsafe_allow_html=True)
+    test1 = st.markdown("<h1 style='text-align: center'>Quiz SNCF</h1>", unsafe_allow_html=True)
 with c3:
     st.text('')
-if st.button("Commencer"):
-    gif_source = open("transition.gif", "rb")
-    gif = gif_source.read()
-    données = base64.b64encode(gif).decode("utf-8")
-    gif_source.close()
-    st.markdown(f'<img src="data:image/gif;base64,{données}">', unsafe_allow_html=True)
-    #time.sleep(5)
-    #switch_page("p1")
+test2 = groupe1.button("Commencer")
+if test2:
+    test1.empty()
+    groupe1.empty()
+    html = """<video controls width="1920" height="1080" autoplay="true" muted="true" loop="false">
+<source
+            src="https://clipchamp.com/watch/kFDbIGrzyke"
+            type="video/mp4" />
+</video>"""
+    st.markdown(html, unsafe_allow_html=True)
+
+    time.sleep(7.5)
+    switch_page("p1")
+
+
+
 
 
 # use_example = "Example OpenAPI Specification"
