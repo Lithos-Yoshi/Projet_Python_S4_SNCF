@@ -1,9 +1,6 @@
 # Main.py correspond à la page d'accueil du projet. Le nom du fichier est en majuscule selon la documentation de
 # streamlit.io relative aux applications multipages.
 
-# config.toml contient :
-# - le thème de l'application
-# - une instruction pour cacher la sidebar
 
 # LIBRAIRIES -----------------------------------------------------------------------------------------------------------
 import streamlit as st
@@ -11,6 +8,13 @@ import streamlit as st
 # librairie streamlit de base, comme par exemple la possibilité de changer de page à l'aide d'un bouton de façon simple.
 from streamlit_extras.switch_page_button import switch_page
 import time
+
+# Variables globales ---------------------------------------------------------------------------------------------------
+r1 : str
+r2 : str
+r3 : str
+r4 : str
+
 
 # PERSONNALISATION -----------------------------------------------------------------------------------------------------
 # Police personnalisée (non disponible par défaut)

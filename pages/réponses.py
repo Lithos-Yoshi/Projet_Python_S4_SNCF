@@ -29,6 +29,7 @@ moyenne = pd.DataFrame(données_brutes.groupby(données_brutes[date].dt.year).ag
 moyenne = moyenne.rename(columns={nbretard:retard, nbprog:prog})
 moyenne[retardprog] = moyenne[retard]*100/moyenne[prog]
 
+
 réduit = moyenne
 réduit[prog12] = réduit[prog]/12
 réduit[retardprog100] = réduit[retardprog]*100
