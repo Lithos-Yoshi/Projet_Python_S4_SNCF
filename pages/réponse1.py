@@ -17,6 +17,28 @@ prog12 = "Trains programmés /12"
 retardprog = "Retard/programmés (%)"
 retardprog100 = "Retard/programmés x100 (%)"
 
+# Mises en forme diverses
+st.markdown(
+         f"""
+         <style>
+            .stApp {{
+                background-color: #DBA574;
+                background-attachment: fixed;
+                background-size: cover
+            }}            
+            div.stButton > button:hover {{
+                background-color: #39342E;
+                color:#FAFAFA;
+            }}
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+		    html, body, [class*="css"]  {{			
+			    font-family: 'Poppins', sans-serif;
+		    }}
+         </style>
+        """,
+        unsafe_allow_html=True
+    )
+
 # Définition d'une fonction de chargement des données (en particulier, elle charge nb_lignes lignes de données)
 @st.cache_data
 def chargement_brut(nb_lignes):
@@ -64,7 +86,7 @@ with col1:
                         }}
                     </style>
                     <body>
-                        Selon toi, {Main.r1} % des TER étaient en retard en 2022. Regarde si tu as vu juste ! 😉
+                        Selon toi, {Main.r1} % des TER étaient en retard en 2022. Regarde si tu as vu juste ! 👇
                     </body>
                 </h5>
                 """,
@@ -91,7 +113,7 @@ with col1:
     st.line_chart(moyenne, x=date, y=retard)
 with col2:
     Gbouton_s = st.empty()
-    Bsuivant = Gbouton_s.button("Suivant")
+    Bsuivant = Gbouton_s.button("Suivant ➡️")
     if Bsuivant:
         switch_page("réponse2")
     st.text("")

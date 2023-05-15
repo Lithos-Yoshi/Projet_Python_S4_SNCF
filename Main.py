@@ -12,8 +12,6 @@ from streamlit_extras.switch_page_button import switch_page
 # VARIABLES GLOBALES ---------------------------------------------------------------------------------------------------
 r1 : str
 r2 : str
-r3 : str
-
 
 # PERSONNALISATION -----------------------------------------------------------------------------------------------------
 # Dispotion visuelle de l'application
@@ -75,7 +73,7 @@ with Ctitre:
     Mtitre = st.markdown(
         """
         <h1 style='text-align: center'>
-            Quiz SNCF
+            Données TER et satisfaction SNCF
         </h1>
         <style>
 			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
@@ -91,7 +89,7 @@ with Ctitre:
     Texplications = Gtexte.markdown(
         """
         <div style='text-align: center'>
-            Ce petit quiz consiste en 3 questions. Une fois les questions répondues, vous aurez une série de données qui serviront de réponse et d'approfondissement.
+            Ce petit quiz consiste juste en 2 questions ! Une fois les questions répondues, vous aurez une série de données qui serviront de réponse et d'approfondissement.
         </div>
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -103,8 +101,9 @@ with Ctitre:
         """,
         unsafe_allow_html=True
     )
+    st.write("")
     Gbouton = st.empty()
-    Bcommencer = Gbouton.button("Commencer")
+    Bcommencer = Gbouton.button("Commencer 🚅")
 mCouleur = st.markdown(
     """
     <style>

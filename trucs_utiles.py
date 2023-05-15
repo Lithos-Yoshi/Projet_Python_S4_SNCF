@@ -53,10 +53,10 @@ def boutons_rs(page_précédente : str, page_suivante : str, question : DeltaGen
     )
     with cs:
         Gbouton_s = st.empty()
-        Bsuivant = Gbouton_s.button("Suivant")
+        Bsuivant = Gbouton_s.button("Suivant ➡️")
     with cr:
         Gbouton_r = st.empty()
-        Bretour = Gbouton_r.button("Retour")
+        Bretour = Gbouton_r.button("⬅️ Retour")
     if Bsuivant:
         Gbouton_s.empty()
         Gbouton_r.empty()
