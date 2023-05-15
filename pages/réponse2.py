@@ -12,6 +12,8 @@ fichier1417 = "2014-2017 barometre-notes-dopinion-sncf.csv"
 fichier1821 = "2018-2021 barometre-notes-dopinion-sncf-gmv.csv"
 fichier2223 = "2022-2023 sncf-image-open-data-mensuel-harris.csv"
 
+st.set_page_config(layout="wide")
+
 # Définition d'une fonction de chargement des données (en particulier, elle charge nb_lignes lignes de données)
 @st.cache_data
 def chargement_brut(données : str, nb_lignes):

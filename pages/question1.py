@@ -2,6 +2,7 @@
 from trucs_utiles import *
 import Main
 # Mises en forme diverses
+st.set_page_config(layout="wide")
 st.markdown(
          f"""
          <style>

@@ -18,6 +18,7 @@ retardprog = "Retard/programmés (%)"
 retardprog100 = "Retard/programmés x100 (%)"
 
 # Mises en forme diverses
+st.set_page_config(layout="wide")
 st.markdown(
          f"""
          <style>
@@ -59,12 +60,6 @@ réduit = réduit.drop(prog, axis=1)
 contenant = st.empty()
 col1, col2 = contenant.columns(2)
 col3, col4, col5 = st.columns(3)
-a = st.empty()
-b = st.empty()
-c = st.empty()
-d = st.empty()
-e = st.empty()
-
 st.markdown(
         """
         <style>
@@ -100,7 +95,7 @@ with col1:
         unsafe_allow_html=True
     )
     st.text("")
-    a.markdown(
+    st.markdown(
         """
         <div style = "text-align: center">
             Évolution de la moyenne annuelle de TER en retard, de TER programmés /12 et du rapport "TER en retard/TER programmés" x100 (ressources.data.sncf.com)
@@ -109,7 +104,7 @@ with col1:
         unsafe_allow_html=True
     )
     st.line_chart(réduit, x=date, y=[retard, prog12, retardprog100])
-    b.markdown(
+    st.markdown(
         """
         <div style = "text-align: center">
             Évolution de la moyenne annuelle de TER en retard (ressources.data.sncf.com)
@@ -131,11 +126,6 @@ with col2:
         texte.empty()
         zoneTitre.empty()
         Gbouton_r.empty()
-        a.empty()
-        b.empty()
-        c.empty()
-        d.empty()
-        e.empty()
         transition("https://media.giphy.com/media/hq8MAOMhX3iIYjqcSk/giphy.gif")
         time.sleep(2.5)
         switch_page("réponse2")
@@ -143,7 +133,7 @@ with col2:
     st.text("")
     st.text("")
     st.text("")
-    c.markdown(
+    st.markdown(
         """
         <div style = "text-align: center">
             Évolution de la moyenne annuelle de TER programmés (ressources.data.sncf.com)
@@ -152,7 +142,7 @@ with col2:
         unsafe_allow_html=True
     )
     st.line_chart(moyenne, x=date, y=prog)
-    d.markdown(
+    st.markdown(
         """
         <div style = "text-align: center">
             Évolution de la moyenne annuelle du rapport TER en retard/TER programmés (ressources.data.sncf.com)
@@ -163,7 +153,7 @@ with col2:
     # Affichage du graphique
     st.line_chart(moyenne, x=date, y=retardprog)
 
-e.write("Pour plus de plus amples détails, voici les données accessibles également sous forme de tableaux :")
+st.write("Pour plus de plus amples détails, voici les données accessibles également sous forme de tableaux :")
 with col4:
     # Affichage des graphiques
     with chart_container(moyenne, ("Graphique", "Tableau", "Tout masquer"), ""):
