@@ -104,6 +104,11 @@ with Ctitre:
     st.write("")
     Gbouton = st.empty()
     Bcommencer = Gbouton.button("Commencer 🚅")
+    st.write("")
+    st.write("")
+    st.write("")
+    r = st.empty()
+    r.write("Si la page suivante s'affiche en même temps que cette page, revenez en arrière et rafraîchissez la page.")
 mCouleur = st.markdown(
     """
     <style>
@@ -127,6 +132,7 @@ if Bcommencer:
     Gtexte.empty()
     mCentre.empty()
     mCouleur.empty()
+    r.empty()
     Gbouton.empty()
     transition()
     time.sleep(5)
