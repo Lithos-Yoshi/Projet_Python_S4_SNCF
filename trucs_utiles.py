@@ -6,7 +6,8 @@ import time
 def boutons_rs(page_précédente : str, page_suivante : str):
     cr, cs = st.columns(2)
     st.markdown(
-        """<style>
+        """
+        <style>
             div[data-testid="column"]:nth-of-type(1)
             {
                 text-align: center;
@@ -15,7 +16,16 @@ def boutons_rs(page_précédente : str, page_suivante : str):
             {
                 text-align: center;
             } 
-        </style>""",
+            div[id^="bui-"] > button:nth-child(1) > button:hover {
+                background-color: #3DCDBC;
+                color:#FAFAFA;
+            }
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+            html, body, [class*="css"] 
+            {			
+			    font-family: 'Poppins', sans-serif;
+			}
+			</style>""",
         unsafe_allow_html=True
     )
 
@@ -31,3 +41,29 @@ def boutons_rs(page_précédente : str, page_suivante : str):
     if Bretour:
         Gbouton_r.empty()
         switch_page(page_précédente)
+
+def mise_en_forme_Question(question : str):
+    st.markdown(
+        f"""
+            <h1>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap">
+                <style>
+                    body {{
+                        font-family: 'Poppins', sans-serif;
+                    }}
+                </style>
+                <body>
+                    {question}
+                </body>
+            </h1>
+            """,
+        unsafe_allow_html=True
+    )
+
+normal = """<style>
+			    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+			    html, body, [class*="css"]  {			
+			        font-family: 'Poppins', sans-serif;
+			    }
+			</style>
+			"""

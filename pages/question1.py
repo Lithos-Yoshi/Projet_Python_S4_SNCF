@@ -5,7 +5,8 @@ import time
 from trucs_utiles import *
 import Main
 
-st.title("1. Quelle est la proportion moyenne trains en retard/trains programmés en 2022 (en %) ?")
+question = "1. Quelle est le rapport moyen trains en retard/trains programmés en 2022 (en %) ?"
+mise_en_forme_Question(question)
 Main.r1 = st.text_input("Votre estimation :")
 boutons_rs("Main", "question2")
 

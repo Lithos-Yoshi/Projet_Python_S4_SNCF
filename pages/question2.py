@@ -5,8 +5,9 @@ import time
 from trucs_utiles import *
 import Main
 
-st.title("2. Selon vous, suite de la question un peu longue ?")
-st.text_input("Votre réponse ?" + Main.r1)
+question = "2. Selon vous, suite de la question un peu longue ?"
+mise_en_forme_Question(question)
+st.text_input("Votre réponse ?")
 boutons_rs("question1", "question3")
 
 

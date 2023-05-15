@@ -6,6 +6,11 @@ from pandas import to_datetime
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.chart_container import chart_container
 import time
+from trucs_utiles import *
+
+st.set_page_config(layout="wide")
+titre = "1. Données : trains en retard, trains programmés"
+mise_en_forme_Question(titre)
 
 date = "Date"
 fichier = "regularite-mensuelle-ter.csv"
@@ -29,16 +34,56 @@ moyenne = pd.DataFrame(données_brutes.groupby(données_brutes[date].dt.year).ag
 moyenne = moyenne.rename(columns={nbretard:retard, nbprog:prog})
 moyenne[retardprog] = moyenne[retard]*100/moyenne[prog]
 
-
 réduit = moyenne
 réduit[prog12] = réduit[prog]/12
 réduit[retardprog100] = réduit[retardprog]*100
 réduit = réduit.drop(prog, axis=1)
 
-with chart_container(moyenne, ("Graphique", "Tableau", "Tout masquer"), ""):
+col1, col2 = st.columns(2)
+with col1:
+    st.markdown(
+        """
+        <div style = "text-align: center">
+            Évolution de la moyenne annuelle de TER en retard, de TER programmés /12 et du rapport TER en retard/TER programmés x100
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     st.line_chart(réduit, x=date, y=[retard, prog12, retardprog100])
-
-with chart_container(moyenne, ("Graphiques", "Tableau", "Tout masquer"), ""):
+    st.markdown(
+        """
+        <div style = "text-align: center">
+            Évolution de la moyenne annuelle de TER en retard
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     st.line_chart(moyenne, x=date, y=retard)
+with col2:
+    st.markdown(
+        """
+        <div style = "text-align: center">
+            Évolution de la moyenne annuelle de TER programmés
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     st.line_chart(moyenne, x=date, y=prog)
+    st.markdown(
+        """
+        <div style = "text-align: center">
+            Évolution de la moyenne annuelle du rapport TER en retard/TER programmés
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     st.line_chart(moyenne, x=date, y=retardprog)
+
+col3, col4, col5 = st.columns(3)
+with col4:
+    with chart_container(moyenne, ("Graphique", "Tableau", "Tout masquer"), ""):
+        st.line_chart(réduit, x=date, y=[retard, prog12, retardprog100])
+    with chart_container(moyenne, ("Graphiques", "Tableau", "Tout masquer"), ""):
+        st.line_chart(moyenne, x=date, y=retard)
+        st.line_chart(moyenne, x=date, y=prog)
+        st.line_chart(moyenne, x=date, y=retardprog)
