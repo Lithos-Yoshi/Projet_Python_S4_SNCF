@@ -1,21 +1,22 @@
 # Main.py correspond à la page d'accueil du projet. Le nom du fichier est en majuscule selon la documentation de
 # streamlit.io relative aux applications multipages.
 
-
-# LIBRAIRIES -----------------------------------------------------------------------------------------------------------
+# IMPORTS --------------------------------------------------------------------------------------------------------------
 import streamlit as st
+import time
 # Importation d'éléments de streamlit-extras, une librairie implémentant des fonctionnalités non présentes dans la
 # librairie streamlit de base, comme par exemple la possibilité de changer de page à l'aide d'un bouton de façon simple.
 from streamlit_extras.switch_page_button import switch_page
-import time
-st.set_page_config(layout="wide")
-# Variables globales ---------------------------------------------------------------------------------------------------
+
+# VARIABLES GLOBALES ---------------------------------------------------------------------------------------------------
 r1 : str
 r2 : str
 r3 : str
 
 
 # PERSONNALISATION -----------------------------------------------------------------------------------------------------
+# Dispotion visuelle de l'application
+st.set_page_config(layout="wide")
 # Police personnalisée (non disponible par défaut)
 st.markdown(
          f"""
@@ -29,14 +30,15 @@ st.markdown(
         """,
         unsafe_allow_html=True
     )
+
 # FONCTIONS & MÉTHODES -------------------------------------------------------------------------------------------------
 # Définition d'une fonction de transition pour passer de la page d'accueil à la première page de questions
 def transition():
-    # On vient forcer le fond (background) à charger un gif que j'ai créé et stocké sur
-    # giphy.com quand cette fonction est appelée.
-    # NB : sans connexion Internet, le gif ne pourra être chargé. Néanmoins, puisqu'il
-    # est trop complexe de le forcer à prendre un fichier local et que le projet doit
-    # de toutes façons tourner avec Internet, j'ai décidé de conserver cette solution.
+    # On vient forcer le fond (background) à charger un gif que j'ai créé et stocké sur giphy.com quand cette fonction
+    # est appelée.
+    # NB : sans connexion Internet, le gif ne pourra être chargé. Néanmoins, puisqu'il est trop complexe de le forcer à
+    # prendre un fichier local et que le projet doit de toutes façons tourner avec Internet, j'ai décidé de conserver
+    # cette solution.
     st.markdown(
          f"""
          <style>
@@ -50,7 +52,7 @@ def transition():
         unsafe_allow_html=True
     )
 
-#
+# RESTE DU CODE --------------------------------------------------------------------------------------------------------
 # Ce qui suit est un "trick" qui permet de visuellement centrer des éléments sur l'écran puisque que ce n'est pas
 # possible de le faire de façon native. On divise l'écran en trois colonnes et on vient mettre ce qui nous intéresse
 # dans la colonne centrale.
@@ -66,7 +68,9 @@ mCentre = st.markdown(
     """,
     unsafe_allow_html=True
 )
+# Ajout d'éléments à la colonne centrale (on laisse les deux autres vides)
 with Ctitre:
+    # Ajout et mise en forme du titre de l'application
     Mtitre = st.markdown(
         """
         <h1 style='text-align: center'>
@@ -82,6 +86,7 @@ with Ctitre:
         unsafe_allow_html=True
     )
     Gtexte = st.empty()
+    # Ajout et mise en forme de l'application
     Texplications = Gtexte.markdown(
         """
         <div style='text-align: center'>
@@ -99,7 +104,6 @@ with Ctitre:
     )
     Gbouton = st.empty()
     Bcommencer = Gbouton.button("Commencer")
-
 mCouleur = st.markdown(
     """
     <style>
@@ -115,7 +119,6 @@ mCouleur = st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 # On vient gérer l'événement du clic sur le bouton. Une fois cliqué, les conteneurs streamlit sont vidés pour laisser
 # une page "vierge" avec uniquement le fond. Ce dernier est donc une transition animée en gif. Pour gérer la latence
 # variable de chargement, je laisse un peu plus de temps que la durée de l'animation pour passer à la page suivante.
@@ -127,4 +130,5 @@ if Bcommencer:
     Gbouton.empty()
     transition()
     time.sleep(5)
+    # streamlit-extras nous permet de changer de page très facilement !
     switch_page("question1")
