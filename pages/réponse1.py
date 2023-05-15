@@ -1,6 +1,7 @@
 # IMPORTS --------------------------------------------------------------------------------------------------------------
 import pandas as pd
 import streamlit
+import streamlit_extras
 from streamlit_extras.chart_container import chart_container
 import Main
 from trucs_utiles import *

@@ -1,5 +1,6 @@
 # IMPORTS --------------------------------------------------------------------------------------------------------------
 import streamlit as st
+import streamlit_extras
 from streamlit.delta_generator import DeltaGenerator
 from streamlit_extras.switch_page_button import switch_page
 import time

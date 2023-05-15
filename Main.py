@@ -6,6 +6,7 @@ import streamlit as st
 import time
 # Importation d'éléments de streamlit-extras, une librairie implémentant des fonctionnalités non présentes dans la
 # librairie streamlit de base, comme par exemple la possibilité de changer de page à l'aide d'un bouton de façon simple.
+import streamlit_extras
 from streamlit_extras.switch_page_button import switch_page
 
 # VARIABLES GLOBALES ---------------------------------------------------------------------------------------------------
