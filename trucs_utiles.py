@@ -1,20 +1,34 @@
 import streamlit as st
+from streamlit.delta_generator import DeltaGenerator
 from streamlit_extras.switch_page_button import switch_page
-from streamlit.source_util import get_pages
 import time
 
-def boutons_rs(page_précédente : str, page_suivante : str):
+def transition(transition_num : str):
+    st.markdown(
+         f"""
+         <style>
+            .stApp {{
+                background-image: url({transition_num});
+                background-attachment: fixed;
+                background-size: cover
+            }}
+         </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+def boutons_rs(page_précédente : str, page_suivante : str, question : DeltaGenerator, champ : DeltaGenerator, transition_num : str):
     cr, cs = st.columns(2)
     st.markdown(
         """
         <style>
             div[data-testid="column"]:nth-of-type(1)
             {
-                text-align: center;
+                text-align: right;
             } 
             div[data-testid="column"]:nth-of-type(2)
             {
-                text-align: center;
+                text-align: left;
             } 
             div[id^="bui-"] > button:nth-child(1) > button:hover {
                 background-color: #3DCDBC;
@@ -37,15 +51,20 @@ def boutons_rs(page_précédente : str, page_suivante : str):
         Bretour = Gbouton_r.button("Retour")
     if Bsuivant:
         Gbouton_s.empty()
+        Gbouton_r.empty()
+        question.empty()
+        champ.empty()
+        transition(transition_num)
+        time.sleep(2.5)
         switch_page(page_suivante)
     if Bretour:
         Gbouton_r.empty()
         switch_page(page_précédente)
 
 def mise_en_forme_Question(question : str):
-    st.markdown(
+    return st.markdown(
         f"""
-            <h1>
+            <h2>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap">
                 <style>
                     body {{
@@ -55,15 +74,7 @@ def mise_en_forme_Question(question : str):
                 <body>
                     {question}
                 </body>
-            </h1>
+            </h2>
             """,
         unsafe_allow_html=True
     )
-
-normal = """<style>
-			    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-			    html, body, [class*="css"]  {			
-			        font-family: 'Poppins', sans-serif;
-			    }
-			</style>
-			"""

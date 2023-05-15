@@ -1,11 +1,5 @@
-from datetime import *
 import pandas as pd
-import streamlit as st
-import plotly.tools
-from pandas import to_datetime
-from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.chart_container import chart_container
-import time
 from trucs_utiles import *
 
 st.set_page_config(layout="wide")

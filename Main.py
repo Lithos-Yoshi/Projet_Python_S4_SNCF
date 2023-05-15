@@ -8,24 +8,27 @@ import streamlit as st
 # librairie streamlit de base, comme par exemple la possibilité de changer de page à l'aide d'un bouton de façon simple.
 from streamlit_extras.switch_page_button import switch_page
 import time
-
+st.set_page_config(layout="wide")
 # Variables globales ---------------------------------------------------------------------------------------------------
 r1 : str
 r2 : str
 r3 : str
-r4 : str
 
 
 # PERSONNALISATION -----------------------------------------------------------------------------------------------------
 # Police personnalisée (non disponible par défaut)
-police = """<style>
-			    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
-			    html, body, [class*="css"]  {			
-			        font-family: 'Poppins', sans-serif;
-			    }
-			</style>"""
-st.markdown(police, unsafe_allow_html=True)
-
+st.markdown(
+         f"""
+         <style>
+            .stApp {{
+                background-color: #39342E;
+                background-attachment: fixed;
+                background-size: cover
+            }}
+         </style>
+        """,
+        unsafe_allow_html=True
+    )
 # FONCTIONS & MÉTHODES -------------------------------------------------------------------------------------------------
 # Définition d'une fonction de transition pour passer de la page d'accueil à la première page de questions
 def transition():
@@ -69,6 +72,28 @@ with Ctitre:
         <h1 style='text-align: center'>
             Quiz SNCF
         </h1>
+        <style>
+			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+			html, body, [class*="css"]  {			
+                font-family: 'Poppins', sans-serif;
+			}
+		</style>
+        """,
+        unsafe_allow_html=True
+    )
+    Gtexte = st.empty()
+    Texplications = Gtexte.markdown(
+        """
+        <div style='text-align: center'>
+            Ce petit quiz consiste en 3 questions. Une fois les questions répondues, vous aurez une série de données qui serviront de réponse et d'approfondissement.
+        </div>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+            html, body, [class*="css"] 
+            {			
+			    font-family: 'Poppins', sans-serif;
+			}
+		</style>
         """,
         unsafe_allow_html=True
     )
@@ -82,6 +107,10 @@ mCouleur = st.markdown(
             background-color: #3DCDBC;
             color:#FAFAFA;
         }
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+		html, body, [class*="css"]  {			
+			font-family: 'Poppins', sans-serif;
+		}
     </style>
     """,
     unsafe_allow_html=True
@@ -92,6 +121,7 @@ mCouleur = st.markdown(
 # variable de chargement, je laisse un peu plus de temps que la durée de l'animation pour passer à la page suivante.
 if Bcommencer:
     Mtitre.empty()
+    Gtexte.empty()
     mCentre.empty()
     mCouleur.empty()
     Gbouton.empty()
